@@ -14,7 +14,7 @@
 
 Obtain a `GraphTensor` instance encoding multiple peptides as a single disjoint graph. In addition to atoms and bonds, virtual nodes are added which corresponds to the residues (amino acids) of the peptides. Relevant atoms are linked to these virtual nodes in a unidirectional way; the features of the virtual nodes can subsequently be extracted for sequence modeling (using e.g., an LSTM).
 
-> These modules are experimental and may change in the future.
+> Current modules are experimental and may change in the future.
 
 ```python 
 from pepgraph import GraphTensor, Context, NodeSet, EdgeSet
@@ -97,12 +97,12 @@ Save graphs to disk (via `tf.io.TFRecordWriter`):
 from pepgraph.datasets import records
 
 peptide_graphs = [peptide_graph[i] for i in range(3)]
-tfrecords.write(peptide_graphs, "/tmp/tf_records/")
+records.write(peptide_graphs, "/tmp/tf_records/")
 ```
 
 Load graphs from disk (via `tf.data.TFRecordDataset`):
 ```python
-ds = tfrecords.load("/tmp/tf_records/")
+ds = records.load("/tmp/tf_records/")
 for x in ds.shuffle(3).batch(2):
     pass
 ```
