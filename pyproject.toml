@@ -1,0 +1,55 @@
+[project]
+name = "pepgraph"
+description = "Graph Neural Networks with TensorFlow and Keras."
+readme = "README.md"
+license = { file = "LICENSE" }
+dynamic = ["version"]
+authors = [
+    { name = "Alexander Kensert", email = "alexander.kensert@gmail.com" },
+]
+keywords = [
+    "python",
+    "keras",
+    "tensorflow",
+    "machine-learning",
+    "deep-learning",
+    "graph-neural-networks",
+    "graphs",
+    "bioinformatics",
+    "computational-chemistry",
+    "proteomics"
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+]
+requires-python = ">=3.9"
+dependencies = ["rdkit==2023.9.5", "tensorflow==2.15.*"]
+
+[project.optional-dependencies]
+dev = ["ruff", "isort"]
+
+[project.urls]
+homepage = "https://github.com/akensert/pepgraph"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+version = { attr = "pepgraph.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["pepgraph*"]
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+line-length = 99
+target-version = 'py39'
+
+[tool.ruff.format]
+docstring-code-format = true
